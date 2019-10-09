@@ -1,0 +1,321 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="rss-parser.min.js"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+		<!--like https://web.archive.org/web/19961026170040/microsoft.com/devonly/-->
+		<!--https://github.com/rbren/rss-parser-->
+
+		<style>
+			#logo{
+				width: 150px;
+			}
+
+			#side-menu{
+				background: #1CAD84;
+				border-right: 3px solid black;
+			}
+
+			#title, #header-row{
+				border-bottom: 3px solid black;
+			}
+
+			#logo-container {
+				padding-left: 0px;
+				margin-left: 0px;
+			}
+
+			.container-fluid{
+				padding-left: 50px;
+				padding-right: 50px;
+			}
+
+			.icon{
+				border-radius: 50%;
+				background: #F0F0F0;
+				height: 40px;
+				width: 40px;
+				overflow: hidden;
+
+				margin-top: 5px;
+				margin-bottom: 5px;
+				margin-left: 0px;
+				margin-right: 20px;
+
+				border: 1px solid black;
+			}
+
+			.icon > i{
+				position: relative;
+				top: 10px;
+				left: 0px;
+				text-align: center;
+			}
+
+			.menu-item{
+				color: #000000;
+			}
+
+			.arrow-right{
+				width: 0;
+				height: 0;
+
+				border-top: 150px solid transparent;
+				border-bottom: 150px solid transparent;
+				border-left: 30px solid green;
+				position: relative;
+
+				left: -15px;
+			}
+
+			.item-desc{
+				max-height: 100px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+
+				padding-left: 20px;
+				font-size: 1.3rem;
+				margin: 0;
+			}
+
+			a span{
+				color: #000000;
+				margin-right: 5px;
+			}
+			
+			#header-content{
+				padding-left: 20px;
+			}
+
+			#header-content iframe {
+				width: 100%;
+				height: 120px;
+				margin-top: 30px;
+			}
+
+			#title > a{
+				color: black;
+			}
+
+			#title h1{
+				font-weight: bold;
+			}
+
+			#bg-title{
+				z-index: -1;
+				position: absolute;
+				top: -10px;
+				left: 270px;
+
+				font-weight: bold;
+				color: #1CAD84;
+				font-size: 50px;
+			}
+
+			.vertical-align{
+				display: table;
+				height: 40px;
+				width: 50px;
+				margin: 0;
+			}
+
+			.vertical-align span{
+				padding-left: 0px;
+				text-align: left;
+				display: table-cell;
+				vertical-align: middle;
+				font-weight: bold;
+			}
+
+			.more{
+				margin-left: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12" id="title">
+					<a href="/"><h1>Advent of Computing</h1></a>
+					<h1 id="bg-title">Podcast</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-1" id="side-menu">
+					<div class="row">
+						<div style="background:black;color:white;" class="col-md-12">
+							Hosted by Sean
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-11">
+					<div class="row" id="header-row">
+						<div class="col-md-1" id="logo-container">
+							<img id="logo">
+						</div>
+
+						<div class="col-md-11" id="header-content"></div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12" id="feed"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script>
+		var feed_url = "http://adventofcomputing.libsyn.com/rss";
+		var params = getUrlVars();
+
+		var menu_items = [{
+			name: "Twitter",
+			icon_class: "fab fa-twitter",
+			href: "https://twitter.com/adventofcomp"
+		},{
+			name: "Apple Podcasts",
+			icon_class: "fas fa-podcast",
+			href: "https://podcasts.apple.com/us/podcast/advent-of-computing/id1459202600"
+		},{
+			name: "Spotify",
+			icon_class: "fab fa-spotify",
+			href: "https://open.spotify.com/show/6M4TTLm5laVMCAVTLpCV3f"
+		},{
+			name: "Buy Merch",
+			icon_class: "fas fa-tshirt",
+			href: "http://tee.pub/lic/MKt4UiBp22g"
+		},{
+			name: "Youtube",
+			icon_class: "fab fa-youtube",
+			href: "https://www.youtube.com/channel/UChm-xJO0j1fl1uY_qJz5h4w"
+		}];
+
+		var post_types = {
+			'text': 'fas fa-sticky-note',
+			'audio/mpeg': 'fas fa-play'
+		};
+
+		menu_items.forEach(function(item){
+			$("#side-menu").append(
+				'<a href="' + item.href + '" class="menu-item"><div class="row">' +
+					'<div class="col-md-4">' +
+						'<div class="icon">' +
+							'<i class="' + item.icon_class + ' fa-2x"></i>' +
+						'</div>' +
+					'</div>' +
+					'<div class="col-md-8"><div class="vertical-align">' +
+						'<span>' + item.name + '</span>' +
+					'</div></div>' +
+				'</div></a>'
+			);
+		});
+
+		var parser = new RSSParser();
+
+		parser.parseURL(feed_url, function(err, feed){
+			console.log(feed);
+
+			$("#logo").attr("src", feed.image.url);
+
+			if(params.guid){
+				feed.items = feed.items.filter(function(item){
+					return item.guid.match(params.guid);
+				});
+			}else{
+				$("#header-content").html(feed.description);
+			}
+
+			feed.items.forEach(function(item){
+				var guid = item.guid;
+				var type = "text";
+
+				if(item.enclosure && item.enclosure.type){
+					type = item.enclosure.type;
+				}
+
+				if(params.guid){
+					var text =
+						"<div class='row'>" +
+							"<div class='col-md-12 item'>" +
+								"<h3>" + item.title + "</h3>" +
+								"<div>" + item.content + "</div>" +
+							"</div>" +
+						"</div>";
+
+					$("#feed").append(text);
+
+					$.get(item.link, function(d){
+						var player_source = $(d).find('iframe:first')[0].src;
+						player_source = player_source.replace("file://", "http://");
+						player_source = player_source.replace("yes", "no");
+
+						$('<iframe frameborder="0" scrolling="no" src="' + player_source + '"></iframe>').appendTo("#header-content");
+					});
+				}else{
+					var text =
+						"<div class='row'>" +
+							"<div class='col-md-12 item'>" +
+								"<a href='?guid=" + guid + "'>" +
+									'<h3><span><i class="' + post_types[type] + ' fa-1x"></i></span>' + item.title + "</h3>" +
+								"</a>" +
+								"<div class='item-desc'>" + item.content + "</div>" +
+								"<div class='more'><a href='?guid=" + guid + "'>More...</a></div>" +
+							"</div>" +
+						"</div>";
+
+					$("#feed").append(text);
+				}
+
+				$("#feed iframe").remove();
+			});
+		});
+
+		/**
+		   * This function coverts a DOM Tree into JavaScript Object. 
+		    * @param srcDOM: DOM Tree to be converted. 
+		     */
+		function xml2json(srcDOM) {
+			let children = [...srcDOM.children];
+	    
+			// base case for recursion. 
+			if (!children.length) {
+		        	return srcDOM.innerHTML
+			}
+         
+	         	// initializing object to be returned. 
+		        let jsonResult = {};
+         
+		        for (let child of children) {
+	  		        // checking is child has siblings of same name. 
+			        let childIsArray = children.filter(eachChild => eachChild.nodeName === child.nodeName).length > 1;
+
+			        // if child is array, save the values as array, else as strings. 
+					if (childIsArray) {
+			             if (jsonResult[child.nodeName] === undefined) {
+			             	jsonResult[child.nodeName] = [xml2json(child)];
+			             } else {
+               				jsonResult[child.nodeName].push(xml2json(child));
+		        	     }
+	        	       } else {
+			            jsonResult[child.nodeName] = xml2json(child);
+			       }
+	         	}
+         
+		        return jsonResult;
+			}
+			   
+		function getUrlVars() {
+    		var vars = {};
+    		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        		vars[key] = value;
+    		});
+    		return vars;
+		}
+	</script>
+</html>
