@@ -50,8 +50,8 @@
 
 			.icon > i{
 				position: relative;
-				top: 10px;
-				left: 0px;
+				top: 8px;
+				left: 2px;
 				text-align: center;
 			}
 
@@ -179,8 +179,8 @@
 			</div>
 
 			<div class="footer navbar-sticky-bottom">
-				<p>&copy; 2019 Sean Haas</p>
-				<p><a href="https://web.archive.org/web/19961026170040/microsoft.com/devonly/">Web 1.0 Inspiration</a></p>
+				&copy; 2019 Sean Haas<br/>
+				<a href="https://web.archive.org/web/19961026170040/microsoft.com/devonly/">Web 1.0 Inspiration</a>
 			</div>
 		</div>
 	</body>
@@ -190,9 +190,9 @@
 		var params = getUrlVars();
 
 		var menu_items = [{
-			name: "Twitter",
-			icon_class: "fab fa-twitter",
-			href: "https://twitter.com/adventofcomp"
+			name: "RSS Feed",
+			icon_class: "fas fa-rss",
+			href: feed_url
 		},{
 			name: "Apple Podcasts",
 			icon_class: "fas fa-podcast",
@@ -206,13 +206,17 @@
 			icon_class: "fab fa-youtube",
 			href: "https://www.youtube.com/channel/UChm-xJO0j1fl1uY_qJz5h4w"
 		},{
-			name: "Buy Merch",
-			icon_class: "fas fa-tshirt",
-			href: "http://tee.pub/lic/MKt4UiBp22g"
-		},{
 			name: "Email",
 			icon_class: "fas fa-at",
 			href: "mailto:adventofcomputing@gmail.com"
+		},{
+			name: "Twitter",
+			icon_class: "fab fa-twitter",
+			href: "https://twitter.com/adventofcomp"
+		},{
+			name: "Buy Merch",
+			icon_class: "fas fa-tshirt",
+			href: "http://tee.pub/lic/MKt4UiBp22g"
 		},{
 			name: "Donate",
 			icon_class: "fab fa-paypal",
