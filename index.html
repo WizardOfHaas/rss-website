@@ -11,7 +11,7 @@
 
 		<style>
 			#logo{
-				width: 150px;
+				width: 100px;
 			}
 
 			#side-menu{
@@ -87,13 +87,14 @@
 			}
 			
 			#header-content{
-				padding-left: 20px;
+				padding-left: 40px;
 			}
 
 			#header-content iframe {
 				width: 100%;
-				height: 120px;
-				margin-top: 30px;
+				height: 95px;
+				margin-top: 5px;
+				padding-left: -50px;
 			}
 
 			#title > a{
@@ -133,6 +134,15 @@
 			.more{
 				margin-left: 30px;
 			}
+
+			#header-content.player{
+				margin-left: 0px;
+				padding-left: 0px;
+			}
+
+			.footer{
+				padding-left: 5px;
+			}
 		</style>
 	</head>
 
@@ -167,6 +177,11 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="footer navbar-sticky-bottom">
+				<p>&copy; 2019 Sean Haas</p>
+				<p><a href="https://web.archive.org/web/19961026170040/microsoft.com/devonly/">Web 1.0 Inspiration</a></p>
+			</div>
 		</div>
 	</body>
 
@@ -187,13 +202,21 @@
 			icon_class: "fab fa-spotify",
 			href: "https://open.spotify.com/show/6M4TTLm5laVMCAVTLpCV3f"
 		},{
+			name: "Youtube",
+			icon_class: "fab fa-youtube",
+			href: "https://www.youtube.com/channel/UChm-xJO0j1fl1uY_qJz5h4w"
+		},{
 			name: "Buy Merch",
 			icon_class: "fas fa-tshirt",
 			href: "http://tee.pub/lic/MKt4UiBp22g"
 		},{
-			name: "Youtube",
-			icon_class: "fab fa-youtube",
-			href: "https://www.youtube.com/channel/UChm-xJO0j1fl1uY_qJz5h4w"
+			name: "Email",
+			icon_class: "fas fa-at",
+			href: "mailto:adventofcomputing@gmail.com"
+		},{
+			name: "Donate",
+			icon_class: "fab fa-paypal",
+			href: "https://paypal.me/adventofcomputing"
 		}];
 
 		var post_types = {
@@ -256,6 +279,7 @@
 						player_source = player_source.replace("yes", "no");
 
 						$('<iframe frameborder="0" scrolling="no" src="' + player_source + '"></iframe>').appendTo("#header-content");
+						$("#header-content").addClass("player");
 					});
 				}else{
 					var text =
