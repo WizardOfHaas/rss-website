@@ -279,7 +279,8 @@
 
 					$.get(item.link, function(d){
 						var player_source = $(d).find('iframe:first')[0].src;
-						player_source = player_source.replace("file://", "http://");
+						player_source = player_source.replace("http://", "https://");
+						player_source = player_source.replace("file://", "https://");
 						player_source = player_source.replace("yes", "no");
 
 						$('<iframe frameborder="0" scrolling="no" src="' + player_source + '"></iframe>').appendTo("#header-content");
