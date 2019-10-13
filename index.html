@@ -279,6 +279,8 @@
 
 					$("#feed").append(text);
 
+					item.link = item.link.replace("http://", "https://");
+					
 					$.get(item.link, function(d){
 						var player_source = $(d).find('iframe:first')[0].src;
 						player_source = player_source.replace("http://", "https://");
