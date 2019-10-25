@@ -1,0 +1,38 @@
+{
+    "feed_url": "https://adventofcomputing.libsyn.com/rss",
+    "menu_items": [
+        {
+            "name": "RSS Feed",
+            "icon_class": "fas fa-rss",
+            "href": "https://adventofcomputing.libsyn.com/rss"
+        },{
+            "name": "Apple Podcasts",
+            "icon_class": "fas fa-podcast",
+            "href": "https://podcasts.apple.com/us/podcast/advent-of-computing/id1459202600"
+        },{
+            "name": "Spotify",
+            "icon_class": "fab fa-spotify",
+            "href": "https://open.spotify.com/show/6M4TTLm5laVMCAVTLpCV3f"
+        },{
+            "name": "Youtube",
+            "icon_class": "fab fa-youtube",
+            "href": "https://www.youtube.com/channel/UChm-xJO0j1fl1uY_qJz5h4w"
+        },{
+            "name": "Email",
+            "icon_class": "fas fa-at",
+            "href": "mailto:adventofcomputing@gmail.com"
+        },{
+            "name": "Twitter",
+            "icon_class": "fab fa-twitter",
+            "href": "https://twitter.com/adventofcomp"
+        },{
+            "name": "Buy Merch",
+            "icon_class": "fas fa-tshirt",
+            "href": "http://tee.pub/lic/MKt4UiBp22g"
+        },{
+            "name": "Donate",
+            "icon_class": "fab fa-paypal",
+            "href": "https://paypal.me/adventofcomputing"
+        }
+    ]
+}
