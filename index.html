@@ -40,6 +40,7 @@
 		<style>
 			#logo{
 				width: 100px;
+				float: right;
 			}
 
 			#side-menu{
@@ -52,8 +53,10 @@
 			}
 
 			#logo-container {
-				padding-left: 0px;
-				margin-left: 0px;
+			}
+
+			#logo-container > div > div{
+				background: #1CAD84;
 			}
 
 			.container-fluid{
@@ -192,16 +195,29 @@
 					<h1 id="bg-title">Podcast</h1>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-2 col-lg-1">
+					
+			<div class="row" id="header-row">
+				<div class="col-md-2" id="logo-container">
 					<div class="row">
-						<div style="background:black;color:white;" class="col-md-12">
+						<div class="col-md-10">
+							<img id="logo">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-10" id="header-content"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2 col-lg-2">
+					<div class="row">
+						<div style="background:black;color:white;" class="col-md-10">
 							Hosted by Sean
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-md-12" id="side-menu">
+						<div class="col-md-10" id="side-menu">
 
 						</div>
 					</div>
@@ -214,14 +230,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-10 col-lg-11">
-					<div class="row" id="header-row">
-						<div class="col-md-1" id="logo-container">
-							<img id="logo">
-						</div>
-
-						<div class="col-md-11" id="header-content"></div>
-					</div>
+				<div class="col-md-10 col-lg-10">
 
 					<div class="row">
 						<div class="col-md-12" id="feed"></div>
