@@ -108,7 +108,7 @@
 						item.link = item.link.replace("http://", "https://");
 
 						$.get(item.link, function(d){
-							var player_source = $(d).find('iframe:first')[0].src;
+							var player_source = $(d).find('iframe:last')[0].src;
 							player_source = player_source.replace("http://", "https://");
 							player_source = player_source.replace("file://", "https://");
 							player_source = player_source.replace("yes", "no");
