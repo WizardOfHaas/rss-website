@@ -95,6 +95,8 @@
 					}
 
 					if(self.params.guid){
+						$("#logo").attr("src",  item.itunes.image);
+
 						var text =
 							"<div class='row'>" +
 								"<div class='col-md-12 item'>" +
@@ -131,7 +133,7 @@
 						$("#feed").append(text);
 					}
 
-					$("#feed iframe").remove();
+					$("#feed iframe:last").remove();
 				});
 			});
 		};
