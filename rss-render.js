@@ -43,15 +43,16 @@
 		var post_types = {
 			'text': 'fas fa-sticky-note',
 			'audio/mpeg': 'fas fa-play'
-        };
+		};
         
-        function RSSRender(config){
-			var self = this;
-			self.config = config;
-			self.params = self.getUrlVars();
+		function RSSRender(config){
+			this.config = config;
+			this.params = this.getUrlVars();
+			this.covers = [];
 
-			self.render();
-        }
+			//self.render();
+			return this;
+		}
 
 		RSSRender.prototype.render = function(){
 			var self = this;
@@ -94,6 +95,10 @@
 						type = item.enclosure.type;
 					}
 
+					if(self.covers.indexOf(item.itunes.image) < 0){
+						self.covers.push(item.itunes.image);
+					}
+
 					if(self.params.guid){
 						$("#logo").attr("src",  item.itunes.image);
 
@@ -117,6 +122,23 @@
 
 							$('<iframe frameborder="0" scrolling="no" src="' + player_source + '"></iframe>').appendTo("#header-content");
 							$("#header-content").addClass("player");
+						});
+
+						//Fetch itunes stuff
+						$.get("https://itunes.apple.com/lookup?id=1459202600&entity=podcastEpisode", function(d){
+							var episodes = JSON.parse(d).results;
+
+							var episode = episodes.filter(function(e){
+								return e.trackName == item.title;
+							})[0];
+
+							if(episode){
+								console.log(episode);
+
+								$("<a href='" + episode.trackViewUrl + "'>" +
+									"<img src='./img/apple_podcasts.svg'>" +
+								"</a>").appendTo("#feed");
+							}
 						});
 					}else{
 						var text =
