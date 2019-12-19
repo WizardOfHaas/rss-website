@@ -135,7 +135,7 @@
 
 								//https://plinkhq.com/i/1459202600/e/1000459702408?to=googlepod
 								$("<a href='https://plinkhq.com/i/" + episode.collectionId + "/e/" + episode.trackId + "?to=googlepod'>" +
-									"<img src='./img/google_podcasts.svg'>" +
+									"<img src='./img/google_podcasts_badge.png'>" +
 								"</a>").appendTo("#feed");
 							}
 						});
@@ -163,9 +163,13 @@
 			var self = this;
 			//Fetch itunes stuff
 			if(!self.itunes_data){
-				$.get("https://itunes.apple.com/lookup?id=1459202600&entity=podcastEpisode", function(d){
-					self.itunes_data = JSON.parse(d).results;
-					self.getAppleData(title, cb);
+				$.ajax({
+					url: "https://itunes.apple.com/lookup?id=1459202600&entity=podcastEpisode",
+					dataType: "jsonp",
+					success: function(d){
+						self.itunes_data = d.results;
+						self.getAppleData(title, cb);
+					}
 				});
 			}else{
 				var episode = self.itunes_data.filter(function(e){
