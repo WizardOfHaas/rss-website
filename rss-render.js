@@ -125,18 +125,17 @@
 						});
 
 						//Fetch itunes stuff
-						$.get("https://itunes.apple.com/lookup?id=1459202600&entity=podcastEpisode", function(d){
-							var episodes = JSON.parse(d).results;
-
-							var episode = episodes.filter(function(e){
-								return e.trackName == item.title;
-							})[0];
-
+						self.getAppleData(item.title, function(episode){
 							if(episode){
 								console.log(episode);
 
 								$("<a href='" + episode.trackViewUrl + "'>" +
 									"<img src='./img/apple_podcasts.svg'>" +
+								"</a>").appendTo("#feed");
+
+								//https://plinkhq.com/i/1459202600/e/1000459702408?to=googlepod
+								$("<a href='https://plinkhq.com/i/" + episode.collectionId + "/e/" + episode.trackId + "?to=googlepod'>" +
+									"<img src='./img/google_podcasts.svg'>" +
 								"</a>").appendTo("#feed");
 							}
 						});
@@ -158,6 +157,23 @@
 					$("#feed iframe:last").remove();
 				});
 			});
+		};
+
+		RSSRender.prototype.getAppleData = function(title, cb){
+			var self = this;
+			//Fetch itunes stuff
+			if(!self.itunes_data){
+				$.get("https://itunes.apple.com/lookup?id=1459202600&entity=podcastEpisode", function(d){
+					self.itunes_data = JSON.parse(d).results;
+					self.getAppleData(title, cb);
+				});
+			}else{
+				var episode = self.itunes_data.filter(function(e){
+					return e.trackName == title;
+				});
+
+				cb(episode[0] || false);
+			}
 		};
 
 		/**
