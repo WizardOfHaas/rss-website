@@ -3,6 +3,32 @@
     float: left;
 }
 
+@media screen and (max-width: 990px){
+    #side-menu{
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    #side-menu a{
+        float: left;
+        margin-left: 30px;
+    }
+
+    #side-menu .col-md-8{
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #logo-container img{
+        margin-left: -15px;
+    }
+
+    #tweets, .twitter-link{
+        display: none;
+    }
+}
+
 #side-menu{
     background: #1CAD84;
     border-right: 3px solid black;
@@ -10,9 +36,6 @@
 
 #title, #header-row{
     border-bottom: 3px solid black;
-}
-
-#logo-container {
 }
 
 #logo-container > div > div{
