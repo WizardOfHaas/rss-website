@@ -30,9 +30,9 @@
             "icon_class": "fas fa-tshirt",
             "href": "https://www.teepublic.com/stores/advent-of-computing?ref_id=10932"
         },{
-            "name": "Donate",
-            "icon_class": "fab fa-paypal",
-            "href": "https://paypal.me/adventofcomputing"
+            "name": "Support The Show!",
+            "icon_class": "fab fa-patreon",
+            "href": "https://www.patreon.com/adventofcomputing"
         }
     ]
 }
