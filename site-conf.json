@@ -6,6 +6,10 @@
             "icon_class": "fas fa-rss",
             "href": "https://adventofcomputing.libsyn.com/rss"
         },{
+            "name": "Timeline!",
+            "icon_class": "fas fa-history",
+            "href": "timeline.html"
+        },{
             "name": "Apple Podcasts",
             "icon_class": "fas fa-podcast",
             "href": "https://podcasts.apple.com/us/podcast/advent-of-computing/id1459202600"

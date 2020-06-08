@@ -6,40 +6,6 @@
 
 		var feed_url = "https://adventofcomputing.libsyn.com/rss";
 
-		var menu_items = [{
-			name: "RSS Feed",
-			icon_class: "fas fa-rss",
-			href: feed_url
-		},{
-			name: "Apple Podcasts",
-			icon_class: "fas fa-podcast",
-			href: "https://podcasts.apple.com/us/podcast/advent-of-computing/id1459202600"
-		},{
-			name: "Spotify",
-			icon_class: "fab fa-spotify",
-			href: "https://open.spotify.com/show/6M4TTLm5laVMCAVTLpCV3f"
-		},{
-			name: "Youtube",
-			icon_class: "fab fa-youtube",
-			href: "https://www.youtube.com/channel/UChm-xJO0j1fl1uY_qJz5h4w"
-		},{
-			name: "Email",
-			icon_class: "fas fa-at",
-			href: "mailto:adventofcomputing@gmail.com"
-		},{
-			name: "Twitter",
-			icon_class: "fab fa-twitter",
-			href: "https://twitter.com/adventofcomp"
-		},{
-			name: "Buy Merch",
-			icon_class: "fas fa-tshirt",
-			href: "http://tee.pub/lic/MKt4UiBp22g"
-		},{
-			name: "Donate",
-			icon_class: "fab fa-paypal",
-			href: "https://paypal.me/adventofcomputing"
-		}];
-
 		var post_types = {
 			'text': 'fas fa-sticky-note',
 			'audio/mpeg': 'fas fa-play'
@@ -49,12 +15,13 @@
 			this.config = config;
 			this.params = this.getUrlVars();
 			this.covers = [];
+			this.currentGUID = "";
 
 			//self.render();
 			return this;
 		}
 
-		RSSRender.prototype.render = function(){
+		RSSRender.prototype.render = function(callback){
 			var self = this;
 
 			self.config.menu_items.forEach(function(item){
@@ -75,7 +42,7 @@
 			var parser = new RSSParser();
 
 			parser.parseURL(self.config.feed_url, function(err, feed){
-				console.log(feed);
+				self.feed = feed;
 
 				$("#logo").attr("src", feed.image.url);
 
@@ -100,45 +67,7 @@
 					}
 
 					if(self.params.guid){
-						$("#logo").attr("src",  item.itunes.image);
-
-						var text =
-							"<div class='row'>" +
-								"<div class='col-md-12 item'>" +
-									"<h3>" + item.title + "</h3>" +
-									"<div>" + item.content + "</div>" +
-								"</div>" +
-							"</div>";
-
-						$("#feed").append(text);
-
-						item.link = item.link.replace("http://", "https://");
-
-						$.get(item.link, function(d){
-							var player_source = $(d).find('iframe:last')[0].src;
-							player_source = player_source.replace("http://", "https://");
-							player_source = player_source.replace("file://", "https://");
-							player_source = player_source.replace("yes", "no");
-
-							$('<iframe frameborder="0" scrolling="no" src="' + player_source + '"></iframe>').appendTo("#header-content");
-							$("#header-content").addClass("player");
-						});
-
-						//Fetch itunes stuff
-						self.getAppleData(item.title, function(episode){
-							if(episode){
-								console.log(episode);
-
-								$("<a href='" + episode.trackViewUrl + "'>" +
-									"<img src='./img/apple_podcasts.svg'>" +
-								"</a>").appendTo("#feed");
-
-								//https://plinkhq.com/i/1459202600/e/1000459702408?to=googlepod
-								$("<a href='https://plinkhq.com/i/" + episode.collectionId + "/e/" + episode.trackId + "?to=googlepod'>" +
-									"<img src='./img/google_podcasts_badge.png'>" +
-								"</a>").appendTo("#feed");
-							}
-						});
+						self.renderGUID(self.params.guid);
 					}else{
 						var text =
 							"<div class='row'>" +
@@ -157,6 +86,55 @@
 					$("#feed iframe:last").remove();
 				});
 			});
+		};
+
+		RSSRender.prototype.renderGUID = function(guid, target = "#feed"){
+			var self = this;
+
+			if(guid != self.currentGUID){
+				self.currentGUID = guid;
+
+				var item = self.feed.items.filter(function(item){
+					return item.guid.match(guid);
+				})[0];
+	
+				$("#logo").attr("src",  item.itunes.image);
+	
+				var text =
+					"<div class='row'>" +
+						"<div class='col-md-12 item'>" +
+							"<h3>" + item.title + "</h3>" +
+							"<div>" + item.content + "</div>" +
+						"</div>" +
+					"</div>";
+				
+				$(target).html(text);
+				
+				item.link = item.link.replace("http://", "https://");
+	
+				$.get(item.link, function(d){
+					var player_source = $(d).find('iframe:last')[0].src;
+					player_source = player_source.replace("http://", "https://");
+					player_source = player_source.replace("file://", "https://");
+					player_source = player_source.replace("yes", "no");
+					$("#header-content").html('<iframe frameborder="0" scrolling="no" src="' + player_source + '"></iframe>');
+					$("#header-content").addClass("player");
+				});
+				
+				//Fetch itunes stuff
+				self.getAppleData(item.title, function(episode){
+					if(episode){
+						$("<a href='" + episode.trackViewUrl + "'>" +
+							"<img src='./img/apple_podcasts.svg'>" +
+						"</a>").appendTo(target);
+						
+						//https://plinkhq.com/i/1459202600/e/1000459702408?to=googlepod
+						$("<a href='https://plinkhq.com/i/" + episode.collectionId + "/e/" + episode.trackId + "?to=googlepod'>" +
+							"<img src='./img/google_podcasts_badge.png'>" +
+						"</a>").appendTo(target);
+					}
+				});
+			}
 		};
 
 		RSSRender.prototype.getAppleData = function(title, cb){

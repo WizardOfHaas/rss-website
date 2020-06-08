@@ -1,0 +1,306 @@
+ {
+	"episodes": [{
+		"number": 11,
+		"guid": "db477e96954545d9ac2c8896a7b7efb9",
+		"title": "Spacewar! (the Game)",
+		"events": [{
+			"date": 1962,
+			"title": "Spacewar! Developed"
+		}]
+	},{
+		"number": 12,
+		"guid": "d74f4e7f18944c6bb12b85c737d259df",
+		"title": "Journey to Altair",
+		"events": [{
+			"date": 1974,
+			"title": "Altari 8800 Released"
+		},{
+			"date": 1975,
+			"title": "Microsoft BASIC Released"
+		}]
+	},{
+		"number": 13,
+		"guid": "07a65d5b31c7413382ecca1b91cb13cd",
+		"title": "Minitel, the French Network Connection",
+		"events": [{
+			"date": 1980,
+			"title": "Minitel Program Networks France"
+		}]
+	},{
+		"number": 14,
+		"guid": "f378989b92544c7d8ebd784a44579bca",
+		"title": "Creeping Towards Viruses",
+		"events": [{
+			"date": 1949,
+			"title": "John Von Neumann Writes 'Theory and Organization of Complex Automota'"
+		},{
+			"date": 1969,
+			"title": "'The Scarred Man' Written by Gregory Benford, Coined Term 'Virus'"
+		},{
+			"date": 1971,
+			"title": "Creeper Virus Released"
+		}]
+	},{
+		"number": 15,
+		"guid": "d14d2be6bd564a74bb99e57729f00574",
+		"title": "Lost in the Colossal Cave",
+		"events": [{
+			"date": 1975,
+			"title": "Colossal Cave Adventure Developed"
+		}]
+	},{
+		"number": 16,
+		"guid": "4a53522e9ece45b3ac3666ff260657d5",
+		"title": "4004: The First Microprocessor",
+		"events": [{
+			"date": 1971,
+			"title": "Intel 4004 Released"
+		}]
+	},{
+		"number": 17,
+		"guid": "820a3fa9-d6cb-4f71-9c6c-545cd7804b6f",
+		"title": "The BBC Domesday Project",
+		"events": [{
+			"date": 1986,
+			"title": "BBC Domesday Project Released"
+		}]
+	},{
+		"number": 17.5,
+		"guid": "4a1a7b5d-1371-4f48-a26f-f2a3a94aff25",
+		"title": "Bill's Problem with Piracy",
+		"events": [{
+			"date": 1976,
+			"title": "'Open Letter to Hobbyists' Written by Bill Gates"
+		}]
+	},{
+		"number": 18,
+		"guid": "e3e451fe-7426-42c4-92c0-5a84f26c8282",
+		"title": "Evolution of the Mouse",
+		"events": [{
+			"date": 1961,
+			"title": "First Mouse Developed at Engelbart's ARC Lab"
+		},{
+			"date": 1972,
+			"title": "Xerox Develops Rollerball Mouse for Alto"
+		},{
+			"date": 1979,
+			"title": "Apple LISA Mouse Designed"
+		}]
+	},{
+		"number": 19,
+		"guid": "7040293d-a854-468b-9ede-b118e04d1344",
+		"title": "PLATO Part 1: A Revolution in Teaching",
+		"events": [{
+			"date": 1952,
+			"title": "ILLIAC Becomes Operational"
+		},{
+			"date": 1960,
+			"title": "PLATO I Developed"
+		},{
+			"date": 1961,
+			"title": "PLATO II Developed"
+		},{
+			"date": 1969,
+			"title": "PLATO III Developed"
+		}]
+	},{
+		"number": 20,
+		"guid": "a9783e2e-dec4-4a11-98d5-f78f818f29c0",
+		"title": "PLATO Part 2: An Online Revolution",
+		"events": [{
+			"date": 1964,
+			"title": "Plasma Display Patented"
+		},{
+			"date": 1972,
+			"title": "PLATO IV Launches at University of Illinois"
+		},{
+			"date": 1973,
+			"title": "Empire, First MMO, Developed for PLATO IV"
+		}]
+	},{
+		"number": 20.5,
+		"guid": "db8bb3d-2443-4a6c-8b91-31e58f49b65b",
+		"title": "Cooking in Y2K",
+		"events": [{
+			"date": 2000,
+			"title": "Y2K Kitchen Hits Shelves"
+		}]
+	},{
+		"number": 21,
+		"guid": "240d52f3-6df0-44f7-a5c9-0ddd16cc8da1",
+		"title": "8008: Intel's Second Shot",
+		"events": [{
+			"date": 1969,
+			"title": "CTC Developes First 'Glass-Teletype' Terminal"
+		},{
+			"date": 1972,
+			"title": "8008 CPU Released by Intel"
+		}]
+	},{
+		"number": 22,
+		"guid": "bf4fe6c4-b3a2-43c5-a937-e1df109d297a",
+		"title": "Going Rogue",
+		"events": [{
+			"date": 1980,
+			"title": "Rogue Written for PDP/11"
+		},{
+			"date": 1984,
+			"title": "Rogue Ported to PC, Macintosh, Atari ST"
+		}]
+	},{
+		"number": 23,
+		"guid": "834b9e04-0477-4d78-9ce6-ee5c0721a8ac",
+		"title": "FORTRAN, Compilers, and Early Programming",
+		"events": [{
+			"date": 1951,
+			"title": "Grace Hopper Creates A-0 Compiler"
+		},{
+			"date": 1954,
+			"title": "John Backus Starts FORTRAN Project at IBM"
+		},{
+			"date": 1957,
+			"title": "First FORTARN Compiler Ships"
+		}]
+	},{
+		"number": 24,
+		"guid": "f2e89438-f358-45fb-b820-4603c05bc9ab",
+		"title": "Making Disks Flexible, Part 1",
+		"events": [{
+			"date": 1971,
+			"title": "8 Inch Floppy Disk(Minnow) Created at IBM"
+		},{
+			"date": 1976,
+			"title": "Shugart Invents 5 1/4 Inch Floppy Disk"
+		}]
+	},{
+		"number": 25,
+		"guid": "6d61d90a-69af-4d53-8b7b-89098a4fabe7",
+		"title": "Making Disks Flexible, Part 2",
+		"events": [{
+			"date": 1980,
+			"title": "Sony Invents Microfloppy Disk"
+		},{
+			"date": 1983,
+			"title": "Apple Builds Prototype MAC with 3 1/2 Inch Floppy"
+		}]
+	},{
+		"number": 26,
+		"guid": "b72aae68-ebcb-4219-91ef-a49d18dd3b65",
+		"title": "Memex and Hyperlinks",
+		"events": [{
+			"date": 1927,
+			"title": "Differential Analizer Built at MIT"
+		},{
+			"date": 1938,
+			"title": "Rapid Selector Built by Vannevar Bush"
+		},{
+			"date": 1945,
+			"title": "As We May Think Published"
+		}]
+	},{
+		"number": 27,
+		"guid": "3e76973e-fc45-4227-8c21-1599aa708a05",
+		"title": "Vectrex, Playing With Vectors",
+		"events": [{
+			"date": 1982,
+			"title": "Vectrex Released"
+		}]
+	},{
+		"number": 28,
+		"guid": "daaad62a-63fc-4fce-bb63-7fd831b83fa2",
+		"title": "Applesoft BASIC, Microsoft and Apple's First Collaboration",
+		"events": [{
+			"date": 1997,
+			"title": "Bill Gates saves Apple from Bankruptcy"
+		},{
+			"date": 1976,
+			"title": "Apple I hits shelves, Integer BASIC soon follows"
+		},{
+			"date": 1977,
+			"title": "Apple II Released"
+		},{
+			"date": 1978,
+			"title": "AppleSoft BASIC Ships"
+		}]
+	},{
+		"number": 29,
+		"guid": "fbe7faa1-c887-43ca-a9ff-818b8a9918d0",
+		"title": "PCM, Origins of Digital Audio",
+		"events": [{
+			"date": 1937,
+			"title": "PCM Developed by Alec Reeves"
+		},{
+			"date": 1941,
+			"title": "Germany Cracks A-3 Code"
+		},{
+			"date": 1943,
+			"title": "Bell Labs Develops SIGSALY(aka The Green Hornet)"
+		},{
+			"date": 1957,
+			"title": "First PCM Synthesizer, MUSIC I, Programmed by Max Mathews"
+		}]
+	},{
+		"number": 29.5,
+		"guid": "b02d2f8a-090d-4125-bb3e-903b29e9512e",
+		"title": "Quick Byte - A Guided Tour of the Macintosh",
+		"events": [{
+			"date": 1984,
+			"title": "A Guided Tour of the Macintosh Released"
+		}]
+	},{
+		"number": 30,
+		"title": "Coherent Is Not UNIX!",
+		"guid": "f3d26093-e7d8-4f90-8b1c-a81a88b85ca4",
+		"events": [{
+			"date": 1973,
+			"title": "AT&T UNIX V4 Goes Public"
+		},{
+			"date": 1949,
+			"title": "DOJ Sues AT&T Over Antitrust Violations"
+		},{
+			"date": 1975,
+			"title": "AT&T UNIX V6 Released"
+		},{
+			"date": 1977,
+			"title": "First Version of BSD Circulates"
+		},{
+			"date": 1977,
+			"title": "XYBASIC Released by Mark Williams Company"
+		},{
+			"date": 1980,
+			"title": "Coherent Released for PDP/11"
+		},{
+			"date": 1983,
+			"title": "Coherent Comes to the IBM PC/XT"
+		},{
+			"date": 1995,
+			"title": "Mark Williams Company Closes"
+		}]
+	},{
+		"number": 31,
+		"title": "Road to Transistors: Part I",
+		"guid": "0488f6d9-a0fe-4e21-847c-c63310a218f3",
+		"events": [{
+			"date": 1880,
+			"title": "Thomas Edison Rediscovers Thermionic Emission"
+		},{
+			"date": 1904,
+			"title": "Ambrose Fleming Invents the Vacuum Tube"
+		},{
+			"date": 1906,
+			"title": "Lee de Forest Patents the Audion Triode Tube"
+		},{
+			"date": 1937,
+			"title": "George Stibitz Creates First Binary Adding Circuit from Spare Relays"
+		},{
+			"date": 1938,
+			"title": "John Atanasoff Visits a 'Honkey-Tonk'"
+		},{
+			"date": 1941,
+			"title": "ABC, First Vacuum Tube Calculator, is Completed"
+		},{
+			"date": 1953,
+			"title": "Cryotron Invented by Dudley Allen Buck"
+		}]
+	}]
+}
