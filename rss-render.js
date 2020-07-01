@@ -15,7 +15,10 @@
 			this.config = config;
 			this.params = this.getUrlVars();
 			this.covers = [];
+			this.timeline = [];
 			this.currentGUID = "";
+
+			this.colors = ['#00429d', '#7ba8c6', '#a8d6c1', '#93c687', '#008000', '#ffaaa2', '#ea6372', '#c32750', '#93003a', '#1eac86', '#e2af39', '#eadac2', '#de3f27'];
 
 			//self.render();
 			return this;
@@ -54,6 +57,8 @@
 					$("#header-content").html(feed.description);
 				}
 
+				var timeline_id = 0;
+
 				feed.items.forEach(function(item){
 					var guid = item.guid;
 					var type = "text";
@@ -84,7 +89,34 @@
 					}
 
 					$("#feed iframe:last").remove();
+
+					//Parse out timeline data
+					var dates = item.content.match(/([1-2][0-9]{3}: [^<]*)/gm);
+
+					if(dates){
+						dates.forEach(function(d){
+							var p = d.split(": ");
+
+							self.timeline.push({
+								id: timeline_id,
+								episode: item.title,
+								guid: item.guid,
+								link: "http://adventofcomputing.com/?guid=" + item.guid,
+								className: "ep-" + item.itunes.episode,
+								group: parseInt(item.itunes.episode),
+								style: "background-color:" + self.colors[Math.floor(item.itunes.episode % self.colors.length)],
+								content: "<p class='ep-number'>E" + item.itunes.episode + "</p><p class='event'>" + p[1] + "</p>",
+								start: p[0] + "-01-01"
+							});
+
+							timeline_id++;
+						});
+					}
 				});
+
+				if(callback){
+					callback();
+				}
 			});
 		};
 

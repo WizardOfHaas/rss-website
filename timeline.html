@@ -150,56 +150,35 @@
 
 			$.get("./site-conf.json", function(config){
 				rssrender = new window.RSSRender(config);
-				rssrender.render();
-			});
 
-			var colors = ['#00429d', '#7ba8c6', '#a8d6c1', '#93c687', '#008000', '#ffaaa2', '#ea6372', '#c32750', '#93003a', '#1eac86', '#e2af39', '#eadac2', '#de3f27'];
+				rssrender.render(function(){
+					var container = document.getElementById('timeline');		
 
-			$.get("./timeline.json", function(data){
-				var testData = [];
-				var i = 0;
+		 			// Create a DataSet (allows two way data-binding)
+		 			//var items = new vis.DataSet(testData);		
 
-				data.episodes.forEach(function(d){
-					d.events.forEach(function(e){
-						testData.push({
-							id: i,
-							episode: d.title,
-							guid: d.guid,
-							link: "http://adventofcomputing.com/?guid=" + d.guid,
-							className: "ep-" + d.number,
-							group: d.number,
-							style: "background-color:" + colors[Math.floor(d.number % colors.length)],
-							content: "<p class='ep-number'>E" + d.number + "</p><p class='event'>" + e.title + "</p>",
-							start: e.date + "-01-01"
-						});
+		 			var items = new vis.DataSet(rssrender.timeline);
+		 			console.log(items);		
 
-						i++;
+		  			// Configuration for the Timeline
+		  			var options = {
+						align: "left",
+	  					height: "150%",
+		  				max: "2020-01-01",
+		  				min: "1880-01-01",
+		  				orientation: "top"
+		  			};		
+
+		  			// Create a Timeline
+			 		var timeline = new vis.Timeline(container, items, options);		
+
+		 	 		timeline.on('click', function(e){
+		 	 			if(e.item != null){
+							rssrender.renderGUID(rssrender.timeline[e.item].guid, "#ep-info");
+						}
 					});
-				});
-
-				var container = document.getElementById('timeline');
-
- 				// Create a DataSet (allows two way data-binding)
- 				var items = new vis.DataSet(testData);
-
-  				// Configuration for the Timeline
-  				var options = {
-  					align: "left",
-  					height: "150%",
-  					max: "2020-01-01",
-  					min: "1880-01-01",
-  					orientation: "top"
-  				};
-
-  				// Create a Timeline
- 		 		var timeline = new vis.Timeline(container, items, options);
-
- 	 			timeline.on('click', function(e){
- 	 				if(e.item != null){
-						rssrender.renderGUID(testData[e.item].guid, "#ep-info");
-					}
-				});
- 	 		});
+		 	 	});
+			});
 		</script>
 	</body>
 </html>

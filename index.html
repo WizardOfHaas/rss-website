@@ -101,8 +101,10 @@
 	</body>
 
 	<script>
+		var rssrender = {};
+		
 		$.get("site-conf.json", function(config){
-			var rssrender = new window.RSSRender(config);
+			rssrender = new window.RSSRender(config);
 			rssrender.render();
 		});
 	</script>
