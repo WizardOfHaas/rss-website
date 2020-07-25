@@ -30,8 +30,6 @@
 		<description><![CDATA[Welcome to Advent of Computing, the show that talks about the shocking, intriguing, and all too often relevant history of computing.  A lot of little things we take for granted today have rich stories behind their creation, in each episode we will learn how older tech has lead to our modern world.]]></description>
 		<itunes:subtitle><![CDATA[]]></itunes:subtitle>
 		<itunes:type>episodic</itunes:type>
-			<itunes:new-feed-url>https://adventofcomputing.libsyn.com/rss</itunes:new-feed-url>
-		
 
 
 		<item>
@@ -43,7 +41,7 @@
 			<itunes:image href="https://ssl-static.libsyn.com/p/assets/f/e/1/e/fe1e99697ff0f96c/floppy1.png" />
 			<description><![CDATA[<p>The floppy disk was a ubiquitous technology for nearly 40 years. From mainframes to home computers, the plastic disk was everywhere. And in the decades it was around there were very few changes made to how it fundamentally worked. So how did it get so popular? What made the floppy disk so flexible? And how did it finally fall out of favor? In this episode we will look at the technology's early days.</p> <p>Like the show? Then why not head over and support me on Patreon. Perks include early access to future episodes, and stickers: <a href= "https://www.patreon.com/adventofcomputing">https://www.patreon.com/adventofcomputing</a></p> <p>Important dates in this episode:</p> <p>1971: 8 Inch Floppy Disk(Minnow) Created at IBM<br /> 1976: Shugart Invents 5 1/4 Inch Floppy Disk</p>]]></description>
 			<content:encoded><![CDATA[<p>The floppy disk was a ubiquitous technology for nearly 40 years. From mainframes to home computers, the plastic disk was everywhere. And in the decades it was around there were very few changes made to how it fundamentally worked. So how did it get so popular? What made the floppy disk so flexible? And how did it finally fall out of favor? In this episode we will look at the technology's early days.</p> <p>Like the show? Then why not head over and support me on Patreon. Perks include early access to future episodes, and stickers: <a href= "https://www.patreon.com/adventofcomputing">https://www.patreon.com/adventofcomputing</a></p> <p>Important dates in this episode:</p> <p>1971: 8 Inch Floppy Disk(Minnow) Created at IBM 1976: Shugart Invents 5 1/4 Inch Floppy Disk</p>]]></content:encoded>
-			<enclosure length="82056904" type="audio/mpeg" url="https://adventofcomputing.com/ep24.amr" />
+			<enclosure length="82056904" type="audio/mpeg" url="http://adventofcomputing.com/ep24.amr" />
 			<itunes:duration>42:27</itunes:duration>
 			<itunes:explicit>clean</itunes:explicit>
 			<itunes:keywords>history,computer,storage,ibm,floppy</itunes:keywords>
