@@ -14,7 +14,7 @@
 		<itunes:summary><![CDATA[Do you want to learn about the history of computers? Are MP3 files just to darn big? Can you only listen to audio streamed off a floppy disk? Well, then I have just the podcast for you. Allow me to introduce Advent of Computing: extreme lo-fi edition. Each episode covers an important story from computing's past in just 1.44 MB.
 ]]></itunes:summary>
 		<image>
-			<url>https://ssl-static.libsyn.com/p/assets/4/e/2/5/4e25bc8089f88907/logo5.png</url>
+			<url>http://adventofcomputing.com/logo_lofi.png</url>
 			<title>Advent of Computing</title>
 			<link><![CDATA[http://adventofcomputing.com/]]></link>
 		</image>
@@ -22,7 +22,7 @@
 		<itunes:keywords>computer,computing,history</itunes:keywords>
 		<itunes:category text="History"/>
 		<itunes:category text="Technology"/>
-		<itunes:image href="https://ssl-static.libsyn.com/p/assets/4/e/2/5/4e25bc8089f88907/logo5.png" />
+		<itunes:image href="http://adventofcomputing.com/logo_lofi.png" />
 		<itunes:explicit>clean</itunes:explicit>
 		<itunes:owner>
 			<itunes:name><![CDATA[Sean S Haas]]></itunes:name>
