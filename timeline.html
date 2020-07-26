@@ -150,34 +150,7 @@
 
 			$.get("./site-conf.json", function(config){
 				rssrender = new window.RSSRender(config);
-
-				rssrender.render(function(){
-					var container = document.getElementById('timeline');		
-
-		 			// Create a DataSet (allows two way data-binding)
-		 			//var items = new vis.DataSet(testData);		
-
-		 			var items = new vis.DataSet(rssrender.timeline);
-		 			console.log(items);		
-
-		  			// Configuration for the Timeline
-		  			var options = {
-						align: "left",
-	  					height: "150%",
-		  				max: "2020-01-01",
-		  				min: "1880-01-01",
-		  				orientation: "top"
-		  			};		
-
-		  			// Create a Timeline
-			 		var timeline = new vis.Timeline(container, items, options);		
-
-		 	 		timeline.on('click', function(e){
-		 	 			if(e.item != null){
-							rssrender.renderGUID(rssrender.timeline[e.item].guid, "#ep-info");
-						}
-					});
-		 	 	});
+				rssrender.renderTimeline();
 			});
 		</script>
 	</body>

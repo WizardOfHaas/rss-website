@@ -4,8 +4,6 @@
     
 		var congif = {};
 
-		var feed_url = "https://adventofcomputing.libsyn.com/rss";
-
 		var post_types = {
 			'text': 'fas fa-sticky-note',
 			'audio/mpeg': 'fas fa-play'
@@ -20,9 +18,99 @@
 
 			this.colors = ['#00429d', '#7ba8c6', '#a8d6c1', '#93c687', '#008000', '#ffaaa2', '#ea6372', '#c32750', '#93003a', '#1eac86', '#e2af39', '#eadac2', '#de3f27'];
 
-			//self.render();
 			return this;
 		}
+
+		RSSRender.prototype.parseFeed = function(callback){
+			var self = this;
+
+			var parser = new RSSParser();
+
+			parser.parseURL(self.config.feed_url, function(err, feed){
+				self.feed = feed;
+				var timeline_id = 0;
+				self.timeline = [];
+
+				feed.items.forEach(function(item){
+					var guid = item.guid;
+
+					var type = "text";
+
+					if(item.enclosure && item.enclosure.type){
+						type = item.enclosure.type;
+					}
+
+					//Parse out timeline data
+					var dates = item.content.match(/([1-2][0-9]{3}: [^<]*)/gm);
+
+					if(dates){
+						dates.forEach(function(d){
+							var p = d.split(": ");
+
+							self.timeline.push({
+								id: timeline_id,
+								episode: item.title,
+								guid: item.guid,
+								link: self.config.base_url + "?guid=" + item.guid,
+								className: "ep-" + item.itunes.episode,
+								group: parseInt(item.itunes.episode),
+								style: "background-color:" + self.colors[Math.floor(item.itunes.episode % self.colors.length)],
+								content: "<p class='ep-number'>E" + item.itunes.episode + "</p><p class='event'>" + p[1] + "</p>",
+								start: p[0] + "-01-01",
+								year: p[0]
+							});
+
+							timeline_id++;
+						});
+					}
+				});
+
+				if(callback){
+					callback(self);
+				}
+			});
+		};
+
+		RSSRender.prototype.renderTimeline = function(){
+			var self = this;
+
+			if(!self.config.timeline){
+				return false;
+			}
+
+			self.parseFeed(function(data){
+				var container = document.getElementById(self.config.timeline.target);
+
+		 		// Create a DataSet (allows two way data-binding)
+		 		var items = new vis.DataSet(self.timeline);
+
+		 		var years = self.timeline.map(function(d){
+		 			return d.year;
+		 		});
+
+		  		// Configuration for the Timeline
+		  		var options = {
+					align: "left",
+	  				height: "150%",
+		  			max: (Math.max(...years) + 30) + "-01-01",
+		  			min: (Math.min(...years) - 10) + "-01-01",
+		  			orientation: "top"
+		  		};
+
+		  		if(self.config.timeline.options){
+		  			options = $.extend(options, self.config.timeline.options);
+		  		}
+
+		  		// Create a Timeline
+			 	var timeline = new vis.Timeline(container, items, options);		
+
+	 	 		timeline.on('click', function(e){
+	 	 			if(e.item != null){
+						self.renderGUID(self.timeline[e.item].guid, "#" + (self.config.timeline.infobox || "ep-info"));
+					}
+				});
+			});
+		};
 
 		RSSRender.prototype.render = function(callback){
 			var self = this;

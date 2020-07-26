@@ -1,5 +1,10 @@
 {
     "feed_url": "https://adventofcomputing.libsyn.com/rss",
+    "base_url": "https://asventofcomputing.com/",
+    "timeline": {
+        "target": "timeline",
+        "infobox": "ep-info"
+    },
     "menu_items": [
         {
             "name": "RSS Feed",
