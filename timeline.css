@@ -1,0 +1,42 @@
+.ep-number{
+    border-radius: 25px;
+    border: 1px solid red;
+    background-color: red;
+    width: 30px;
+    font-size: 9px;
+    position: relative;
+    top: -20px;
+    left: -10px;
+    display: inline;
+    float: left;
+}
+
+.event{
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    left: -31px;
+    cursor: pointer;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all .3s linear;
+}
+
+.vis-item.vis-box{
+    max-width: 150px;
+}
+
+.vis-item.vis-box:hover{
+    z-index: 1000;
+    border: solid 2px #ffc200;
+    max-width: none;
+}
+
+.vis-box > .vis-item-content{
+    margin-right: -30px;
+}
+
+#timeline{
+    margin-top: 15px;
+}
