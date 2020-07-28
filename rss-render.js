@@ -18,6 +18,10 @@
 
 			this.colors = ['#00429d', '#7ba8c6', '#a8d6c1', '#93c687', '#008000', '#ffaaa2', '#ea6372', '#c32750', '#93003a', '#1eac86', '#e2af39', '#eadac2', '#de3f27'];
 
+			if(config.colors){
+				this.colors = config.colors;
+			}
+
 			return this;
 		}
 
@@ -115,20 +119,22 @@
 		RSSRender.prototype.render = function(callback){
 			var self = this;
 
-			self.config.menu_items.forEach(function(item){
-				$("#side-menu").append(
-					'<a href="' + item.href + '" class="menu-item"><div class="row">' +
-						'<div class="col-md-4">' +
-							'<div class="icon">' +
-								'<i class="' + item.icon_class + ' fa-2x"></i>' +
+			if(self.config.menu_items){
+				self.config.menu_items.forEach(function(item){
+					$("#side-menu").append(
+						'<a href="' + item.href + '" class="menu-item"><div class="row">' +
+							'<div class="col-md-4">' +
+								'<div class="icon">' +
+									'<i class="' + item.icon_class + ' fa-2x"></i>' +
+								'</div>' +
 							'</div>' +
-						'</div>' +
-						'<div class="col-md-8"><div class="vertical-align">' +
-							'<span>' + item.name + '</span>' +
-						'</div></div>' +
-					'</div></a>'
-				);
-			});
+							'<div class="col-md-8"><div class="vertical-align">' +
+								'<span>' + item.name + '</span>' +
+							'</div></div>' +
+						'</div></a>'
+					);
+				});
+			}
 
 			var parser = new RSSParser();
 
