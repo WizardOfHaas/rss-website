@@ -12,6 +12,11 @@
 		function RSSRender(config){
 			this.config = config;
 			this.params = this.getUrlVars();
+
+			if(this.params.feed_url){
+				this.config.feed_url = this.params.feed_url;
+			}
+
 			this.covers = [];
 			this.timeline = [];
 			this.currentGUID = "";
