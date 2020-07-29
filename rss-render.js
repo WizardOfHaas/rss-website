@@ -60,7 +60,6 @@
 								id: timeline_id,
 								episode: item.title,
 								guid: item.guid,
-								link: self.config.base_url + "?guid=" + item.guid,
 								className: "ep-" + item.itunes.episode,
 								group: parseInt(item.itunes.episode),
 								style: "background-color:" + self.colors[Math.floor(item.itunes.episode % self.colors.length)],
@@ -111,8 +110,8 @@
 		  		}
 
 		  		// Create a Timeline
-			 	var timeline = new vis.Timeline(container, items, options);		
-
+			 	var timeline = new vis.Timeline(container, items, options);
+			 	
 	 	 		timeline.on('click', function(e){
 	 	 			if(e.item != null){
 						self.renderGUID(self.timeline[e.item].guid, "#" + (self.config.timeline.infobox || "ep-info"));

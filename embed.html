@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<link href="./vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+		<link href="./timeline.css" rel="stylesheet" type="text/css" />
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="./rss-parser.min.js"></script>
+		<script src="./rss-render.js"></script>
+		<script src="./vis-timeline-graph2d.min.js"></script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div id="ep-info"></div>
+			<div id="timeline"></div>
+		</div>
+	</body>
+
+	<script>
+		rssrender = new window.RSSRender({
+			"feed_url": "https://adventofcomputing.libsyn.com/rss",
+    		"timeline": {
+        		"target": "timeline",
+        		"infobox": "ep-info"
+    		}
+    	});
+
+		rssrender.renderTimeline();
+	</script>
+</html>
