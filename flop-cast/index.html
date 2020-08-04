@@ -1,0 +1,180 @@
+<html>
+	<head>
+		<link rel="shortcut icon" href="../favicon.ico">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=2.0">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-itunes-app" content="app-id=1459202600">
+		<meta name="description" content="Welcome to Advent of Computing, the show that talks about the shocking, intriguing, and all too often relevant history of computing.  A lot of little things we take for granted today have rich stories behind their creation, in each episode we will learn how older tech has lead to our modern world.">
+		<meta itemprop="name" content="Advent of Computing">
+		<meta itemprop="description" content="Welcome to Advent of Computing, the show that talks about the shocking, intriguing, and all too often relevant history of computing.  A lot of little things we take for granted today have rich stories behind their creation, in each episode we will learn how older tech has lead to our modern world.">
+		<meta itemprop="image" content="http://assets.libsyn.com/content/49405363">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="http://adventofcomputing.libsyn.com/">
+		<meta property="og:title" content="Advent of Computing">
+		<meta property="og:image" content="http://assets.libsyn.com/content/49405363?height=250&amp;width=250">
+		<meta property="og:image:width" content="250">
+		<meta property="og:image:height" content="250">
+		<meta property="og:description" content="Welcome to Advent of Computing, the show that talks about the shocking, intriguing, and all too often relevant history of computing.  A lot of little things we take for granted today have rich stories behind their creation, in each episode we will learn how older tech has lead to our modern world.">
+		<meta name="twitter:site" content="@adventofcomp">
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:title" content="Advent of Computing">
+		<meta name="twitter:description" content="Welcome to Advent of Computing, the show that talks about the shocking, intriguing, and all too often relevant history of computing.  A lot of little things we take for granted today have rich stories behind their creation, in each episode we will learn how older tech has lead to our modern world.">
+
+		<link rel="alternate" type="application/rss+xml" title="Advent of Computing" href="http://adventofcomputing.libsyn.com/rss">
+
+		<title>Advent of Computing</title>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="../rss-parser.min.js"></script>
+        <script src="../rss-render.js"></script>
+        <script src="amr-player/amrnb.js"></script>
+        <script src="amr-player/amrplayer.js"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+		<!--like https://web.archive.org/web/19961026170040/microsoft.com/devonly/-->
+		<!--https://github.com/rbren/rss-parser-->
+
+		<link rel="stylesheet" href="../site.css">
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12" id="title">
+					<a href="/"><h1>Advent of Computing</h1></a>
+					<h1 id="bg-title">Podcast</h1>
+				</div>
+			</div>
+					
+			<div class="row" id="header-row">
+				<div class="col-md-2 col-sm-2" id="logo-container">
+					<div class="row">
+						<div class="col-md-10">
+							<img id="logo">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-9 col-sm-8" id="header-content"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2 col-lg-2">
+					<div class="row">
+						<div style="background:black;color:white;" class="col-md-10">
+							Hosted by Sean
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-10 col-sm-12" id="side-menu">
+
+						</div>
+					</div>
+
+					<div class="row" id="tweets">
+						<a class="twitter-timeline" href="https://twitter.com/adventofcomp?ref_src=twsrc%5Etfw">Tweets by adventofcomp</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+					</div>
+					<div class="row twitter-link">
+						<a href="https://twitter.com/adventofcomp">More...</a>
+					</div>
+				</div>
+
+				<div class="col-md-10 col-lg-10">
+
+					<div class="row">
+						<div class="col-md-10">
+                            <p>
+								Do you want to learn about the history of computers? Are MP3 files just to darn big? Can you only listen to audio streamed off a floppy disk? Well, then I have just the podcast for you. Allow me to introduce Advent of Computing: extreme lo-fi edition. Each episode is guaranteed to be under 1.44 megabytes.
+							</p>
+
+                            <p>
+								If you were being generous you could say I work in the broadcasting industry, I'm a software developer for an audio-focused CDN. I also host a computer history podcast on the side. In my day-to-day life I tend to do a lot more encoding and transcoding that most people. Usually the goal with transcoding is to turn some format audio file into another format while maintaining its quality. But there's no reason to you can't go the other way. One great example is STRUDELSOFT, a vaporwave label that only publishes music on floppy disks. They can fit an album, albeit a short one, on a single 1.44 megabyte disk. That got me to thinking, just how far does that rabbit hole go? As it turns out, pretty far. And with a little doing it's possible to actually fit an entire hour long podcast episode on a single disk.
+                            </p>
+                                
+                            <p>
+								The trick to all of this is encoding. Now, there are probably well over a hundred different ways to encode and package up audio. MP3 is the most familiar, but you also have formats with better compression like AAC, or lossless formats like FLAC and WAV. Those all have their place, but they produce pretty big files. Lucily, there are other options. The one I went with, and I think the only one that can actually work for these purposes, is the Adaptive Multi-Rate codec. AMR is an audio coded that's widely used for transmitting telephone calls over GSM networks, but it can just as easily be used to encode full audio files. One of its major benefits is that it's tiny. Like, really tiny. If you've ever made a call on a cellphone you've' experienced the glory of AMR. Boasting a fixed 8kHz sampling rate, and able to go as low as 1.8 kbit/s, it doesn't sound all that good.
+                            </p>
+                                
+                            <p>
+								For encoding my go-to is always FFmpeg. However, the stock install I have handy right now wasn't built with AMR encoding support. But never fear, SoX(The SOund eXchange) comes out of the box with full AMR support(at least out of apt). The final setup I came up with is actually a combination of the two programs. Even with aggressively low bitrates I my files were still a little too big. So I do a first pass through FFmpeg to speed up the audio slightly(I'm using 1.2 times right now). Then I encode it down as AMR with a bitrate around 5 kbit/s. The scripting looks something like this:
+
+                                
+                                <pre>ffmpeg -i big_input.mp3 -filter:a "atempo=1.2" tmp.mp3
+sox tmp.mp3 -C 0 tiny_output.amr</pre>
+
+								The gains, or rather the losses, from this procedure are impressive. Starting with a 72 MB MP3 file, just over 45 minutes of audio, I can shave that down to 1.2 MB. That's small enough to fit an whole episode onto a floppy disk. But can I take this further? Can I distribute this ultra low-fi audio as a fully fledged podcast feed?
+							</p>
+							
+							<p>
+								Well… kinda. This is where we run into a big roadblock. Podcasts are distributed via RSS feeds, basically a big XML file that lists each episode, all the details about that episode, and where links to where the audio files are. Those RSS files are then passed off to a directory like Apple Podcasts, Spotify, or Google Podcasts. You can theoretically put anything you want in an RSS feed, but the final arbiters of what is allowable for a podcast comes down to these directories. Apple Podcasts, as well as other directories, only support M4A, MP3, MOV, MP4, M4V, and PDF files as valid content. Note the lack of our exotic low-bitrate format of choice. So if we craft a beautiful RSS feed complete full of AMR encoded episodes we can't get it out to the world via normal channels.
+							</p>
+
+							<p>
+								Some experimentation shows that I can get really close to the 1.44 MB cut off by transcoding my AMR files back to MP3. This works because the process of generating my super small audio files strips out a lot of data, it's not reversible. But even with that I end up getting around a 2 MB MP3 file, and that's just too darn big. The problem I run into is that none of the permitted audio formats support low enough bitrates or sample rates to squeeze everything down. The best I can get is 16 kbit/s at 11 kHz. The beautifully lo-fi feed won't be showing up on any major directories. That being said, I still have an RSS feed on offer. Most podcast players that allow you to import an RSS feed directly seem fine playing AMR files.
+							</p>
+
+							<p>
+								There is one other big issue with this approach. No matter what fancy codecs or compression algorithms you use there is always an upper limit to how much data you can squeeze onto a floppy disk. For AMR and our given encoding settings we can calculate this limit pretty easily. Encoding at 5.15 kbit/s we can get just over 38 minutes of audio down to 1.44 MB. By speeding up the audio 1.3 times we can up that to about 45 minutes. This approach gives us what I'd calla mediocre audio quality, it's a little fast and it's extra crunchy. Just imagine listening to a JPEG. For most of my back catalog of episodes this is fine, but a handful of my episodes are actually over 45 minutes long. And being a bit of a completionist I can't leave those out of my lo-fi feed. To get those to fit I need to get a little more aggressive, so a few episodes had to be sped up 1.35 times just to get them down to size.
+							</p>
+
+							<p>
+								If you are feeling adventurous, they you can subscribe listen to the entire lo-fi rendition of my podcast via rss here: <a href="https://adventofcomputing.com/flop-cast/flop-cast.rss">https://adventofcomputing.com/flop-cast/flop-cast.rss</a>
+							</p>
+
+                            <p>
+								Showing a demo of AMR playback online isn't all that easy:</br>
+								
+								<button class="amr-player btn btn-primary" data-file="./audio/ep24_-_Floppy_Part1.amr">Play</button>
+							</p>
+                        </div>
+					</div>
+				</div>
+			</div>
+
+			<div class="footer navbar-sticky-bottom">
+				&copy; 2019 Sean Haas<br/>
+				<a href="https://web.archive.org/web/19961026170040/microsoft.com/devonly/">Web 1.0 Inspiration</a>
+			</div>
+		</div>
+	</body>
+
+	<script>
+		var rssrender = {};
+		
+		$.get("../site-conf.json", function(config){
+			rssrender = new window.RSSRender(config);
+			rssrender.render();
+		});
+
+        var player = false;
+
+        $(".amr-player").on("click", function(e){
+            if(player){
+                player.pause();
+            }
+
+            console.log($(e.target).data('file'));
+
+            player = new AmrPlayer($(e.target).data('file'));
+            player.toggle();
+        });
+	</script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-26647302-3"></script>
+	<script>
+  	window.dataLayer = window.dataLayer || [];
+  	function gtag(){dataLayer.push(arguments);}
+  	gtag('js', new Date());
+
+  	gtag('config', 'UA-26647302-3');
+	</script>
+</html>
