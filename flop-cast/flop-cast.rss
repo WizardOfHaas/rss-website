@@ -11,7 +11,7 @@
 		<copyright><![CDATA[Sean Haas 2019]]></copyright>
 		<docs>http://adventofcomputing.com/</docs>
 		<managingEditor>adventofcomputing@gmail.com (adventofcomputing@gmail.com)</managingEditor>
-		<itunes:summary><![CDATA[Do you want to learn about the history of computers? Are MP3 files just to darn big? Can you only listen to audio streamed off a floppy disk? Well, then I have just the podcast for you. Allow me to introduce Advent of Computing: extreme lo-fi edition. Each episode covers an important story from computing's past in just 1.44 MB.]]></itunes:summary>
+		<itunes:summary><![CDATA[Do you want to learn about the history of computers? Are MP3 files just to darn big? Can you only listen to audio streamed off a floppy disk? Well, then I have just the podcast for you. Allow me to introduce Advent of Computing: extreme lo-fi edition. Each episode covers an important story from computing's past in just 1.44 MB. I'd highly recomending listening to the normal podcast, complete with better audio quality. You can find that at https://adventofcomputing.com/]]></itunes:summary>
 		<image>
 			<url>http://adventofcomputing.com/logo_lofi.png</url>
 			<title>Advent of Computing</title>
@@ -27,7 +27,7 @@
 			<itunes:name><![CDATA[Sean S Haas]]></itunes:name>
 			<itunes:email>adventofcomputing@gmail.com</itunes:email>
 		</itunes:owner>
-		<description><![CDATA[Do you want to learn about the history of computers? Are MP3 files just to darn big? Can you only listen to audio streamed off a floppy disk? Well, then I have just the podcast for you. Allow me to introduce Advent of Computing: extreme lo-fi edition. Each episode covers an important story from computing's past in just 1.44 MB.]]></description>
+		<description><![CDATA[Do you want to learn about the history of computers? Are MP3 files just to darn big? Can you only listen to audio streamed off a floppy disk? Well, then I have just the podcast for you. Allow me to introduce Advent of Computing: extreme lo-fi edition. Each episode covers an important story from computing's past in just 1.44 MB. I'd highly recomending listening to the normal podcast, complete with better audio quality. You can find that at https://adventofcomputing.com/]]></description>
 		<itunes:subtitle><![CDATA[]]></itunes:subtitle>
 		<itunes:type>episodic</itunes:type>
 
