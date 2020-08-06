@@ -91,6 +91,8 @@
 
 					<div class="row">
 						<div class="col-md-10">
+							<h2>Making a Floppy Disk Sized Podcast</h2>
+
                             <p>
 								Do you want to learn about the history of computers? Are MP3 files just to darn big? Can you only listen to audio streamed off a floppy disk? Well, then I have just the podcast for you. Allow me to introduce Advent of Computing: extreme lo-fi edition. Each episode is guaranteed to be under 1.44 megabytes.
 							</p>
@@ -109,29 +111,35 @@
                                 <pre>ffmpeg -i big_input.mp3 -filter:a "atempo=1.2" tmp.mp3
 sox tmp.mp3 -C 0 tiny_output.amr</pre>
 
-								The gains, or rather the losses, from this procedure are impressive. Starting with a 72 MB MP3 file, just over 45 minutes of audio, I can shave that down to 1.2 MB. That's small enough to fit an whole episode onto a floppy disk. But can I take this further? Can I distribute this ultra low-fi audio as a fully fledged podcast feed?
+								The gains, or rather the losses, from this procedure are impressive. Starting with a 72 MB MP3 file, just over 45 minutes of audio, I can shave that down to 1.2 MB. That's small enough to fit an whole episode onto a floppy disk. So, how far can I take this? Can I create a full podcast feed with nothing but floppy-sized episodes?
+							</p>
+
+							<h2>Going Further!</h2>
+
+							<p>
+								There is one big issue with this approach. No matter what fancy codecs or compression algorithms you use there is always an upper limit to how much data you can squeeze onto a floppy disk. For AMR and our given encoding settings we can calculate this limit pretty easily. Encoding at 5.15 kbit/s we can get just over 38 minutes of audio down to 1.44 MB. By speeding up the audio 1.3 times we can up that to about 45 minutes. This approach gives us what I'd calla mediocre audio quality, it's a little fast and it's extra crunchy. Just imagine listening to a JPEG. For most of my back catalog of episodes this is fine, but a handful of my episodes are actually over 45 minutes long. And being a bit of a completionist I can't leave those out of my lo-fi feed. To get those to fit I need to get a little more aggressive, so a few episodes had to be sped up 1.35 times just to get them down to size. With everything converted building up an RSS feed is a since, just replace the normal MP3 files paths with links to my crispy tunes.
 							</p>
 							
 							<p>
-								Well… kinda. This is where we run into a big roadblock. Podcasts are distributed via RSS feeds, basically a big XML file that lists each episode, all the details about that episode, and where links to where the audio files live. Those RSS files are then passed off to a directory like Apple Podcasts, Spotify, or Google Podcasts. You can theoretically put anything you want in an RSS feed, but the final arbiters of what is allowable for a podcast are those directories. Apple Podcasts, as well as most large directories, only support M4A, MP3, MOV, MP4, M4V, and PDF(why?) files as valid content. Note the lack of our exotic low-bitrate format of choice. So if we craft a beautiful RSS feed complete full of AMR encoded episodes we can't get it out to the world via normal channels.
+								This is where we run into a big roadblock. Podcasts are distributed via RSS feeds, basically a big XML file that lists each episode, all the details about that episode, and where links to where the audio files live. Those RSS files are then passed off to a directory like Apple Podcasts, Spotify, or Google Podcasts. You can theoretically put anything you want in an RSS feed, but the final arbiters of what is allowable for a podcast are those directories. Apple Podcasts, as well as most large directories, only support M4A, MP3, MOV, MP4, M4V, and PDF(why?) files as valid content. Note the lack of our exotic low-bitrate format of choice. So if we craft a beautiful RSS feed full of AMR encoded episodes we can't get it out to the world via normal channels.
 							</p>
 
 							<p>
-								Some experimentation shows that I can get really close to the 1.44 MB cut off by transcoding my AMR files back to MP3. This works because the process of generating my super small audio files strips out a lot of data, it's not reversible. But even with that I end up getting around a 2 MB MP3 file, and that's just too darn big. The problem I run into is that none of the permitted audio formats support low enough bitrates or sample rates to squeeze everything down. The best I can get is 16 kbit/s at 11 kHz. The beautifully lo-fi feed won't be showing up on any major directories. That being said, I still have an RSS feed on offer. Most podcast players that allow you to import an RSS feed directly seem fine playing AMR files.
+								Some experimentation shows that I can get really close to the 1.44 MB cut off by transcoding my AMR files back to MP3. This works because the process of generating my super small audio files strips out a lot of data, it's not reversible. But even with that I end up getting around a 2 MB MP3 file, and that's just too darn big. The problem I run into is that none of the permitted audio formats support low enough bitrates or sample rates to squeeze everything down. The best I can get is 16 kbit/s at 11 kHz. The beautifully lo-fi feed won't be showing up on any major directories, at least that's what I thought.
 							</p>
 
 							<p>
-								There is one other big issue with this approach. No matter what fancy codecs or compression algorithms you use there is always an upper limit to how much data you can squeeze onto a floppy disk. For AMR and our given encoding settings we can calculate this limit pretty easily. Encoding at 5.15 kbit/s we can get just over 38 minutes of audio down to 1.44 MB. By speeding up the audio 1.3 times we can up that to about 45 minutes. This approach gives us what I'd calla mediocre audio quality, it's a little fast and it's extra crunchy. Just imagine listening to a JPEG. For most of my back catalog of episodes this is fine, but a handful of my episodes are actually over 45 minutes long. And being a bit of a completionist I can't leave those out of my lo-fi feed. To get those to fit I need to get a little more aggressive, so a few episodes had to be sped up 1.35 times just to get them down to size.
+								There is a weird coda to this project. Once I had everything converted to my liking and built up a valid RSS feed I got a little curious. If I listen to what most podcast directories sa about their requirements then I shouldn't be able to submit this feed to any major playform. But hey, docs can be wrong. So I decided to try submitting this lo-fi feed around a few places. As epxected Apple Podcasts just gave a validation error, but Spotify actially accepted the feed and published it. Stranger still, it can play back in browser. This shocked me because AMR isn't supported in any major web browser, there are some JS players that alomst work but are pretty flaky. I'm at a bit of a loss as to how they support this, unless they are transcoding every incoming podcast episode to an MP3 somewhere along the line. But hey, it works. You can see for yourself here:
+							</p>
+
+							<iframe src="https://open.spotify.com/embed-podcast/episode/2sXla0ToFIBcDFBPAxqoHo" width="100%" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+							<p>
+								If you'd like a more direct method, then the raw RSS feed is available here: <a href="https://adventofcomputing.com/flop-cast/flop-cast.rss">https://adventofcomputing.com/flop-cast/flop-cast.rss</a>
 							</p>
 
 							<p>
-								If you are feeling adventurous, they you can subscribe listen to the entire lo-fi rendition of my podcast via rss here: <a href="https://adventofcomputing.com/flop-cast/flop-cast.rss">https://adventofcomputing.com/flop-cast/flop-cast.rss</a>
-							</p>
-
-                            <p>
-								Showing a demo of AMR playback online isn't all that easy:</br>
-								
-								<button class="amr-player btn btn-primary" data-file="./audio/ep24_-_Floppy_Part1.amr">Play</button>
+								Should anyone actually listen to this podcast feed? Probably not, but this is a fun proof of concept. If you want to listen to my podcast proper I do have a normal feed, one with properly encoded MP3 files and much better audio quality. You can find everything about Advent of Computing at my website(<a href="http://adventofcomputing.com/">http://adventofcomputing.com/</a>).
 							</p>
                         </div>
 					</div>
@@ -155,7 +163,7 @@ sox tmp.mp3 -C 0 tiny_output.amr</pre>
 
         var player = false;
 
-        $(".amr-player").on("click", function(e){
+        /*$(".amr-player").on("click", function(e){
             if(player){
                 player.pause();
             }
@@ -164,7 +172,7 @@ sox tmp.mp3 -C 0 tiny_output.amr</pre>
 
             player = new AmrPlayer($(e.target).data('file'));
             player.toggle();
-        });
+        });*/
 	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
