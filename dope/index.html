@@ -1,0 +1,590 @@
+<html>
+	<head>
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.css" integrity="sha512-iLYuqv+v/P4u9erpk+KM83Ioe/l7SEmr7wB6g+Kg1qmEit8EShDKnKtLHlv2QXUp7GGJhmqDI+1PhJYLTsfb8w==" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js" integrity="sha512-2PRgAav8Os8vLcOAh1gSaDoNLe1fAyq8/G3QSdyjFFD+OqNjLeHE/8q4+S4MEZgPsuo+itHopj+hJvqS8XUQ8A==" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+        <script src="./dope.js"></script>
+
+		<style>
+			pre, code{
+				white-space: pre-line;
+			}
+
+			.ex{
+				padding-left: 5px;
+				padding-top: 0px;
+				padding-bottom: 0px;
+
+				height: 400px;
+			}
+
+			.ex pre{
+				color: white;
+			}
+
+			.run-ex{
+				position: absolute;
+				bottom: 5px;
+			}
+
+            .ex p{
+                position: absolute;
+                top: 3px;
+                color: white;
+                text-decoration: underline;
+            }
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>DOPE: BASIC's Predecesor</h3>
+                </div>
+            </div>
+
+			<div class="row">
+                <div class="col-md-8 col-sm-12">
+                    <div id="term"></div>
+                </div>
+
+                <!--
+                <div class="col-md-4 col-sm-12">
+                    <a class="btn" data-toggle="collapse" href="#debug">
+						<div><h5>Variables...</h5></div>
+					</a>
+
+					<div id="debug" class="collapse"></div>
+                </div>
+                -->
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Example Programs</h3>
+
+					<div class="row">
+						<div class="col-md-3">
+							<div class="card card-body bg-dark ex">
+                                <p>The Standard</p>
+
+								<pre><code>
+									1'A'HELLO
+									2'T'1
+									3'F
+								</code></pre>
+
+								<a href="#" class="run-ex">Load Example</a>
+							</div>
+						</div>
+						
+						<div class="col-md-3">
+							<div class="card card-body bg-dark ex">
+                                <p>Table of Roots</p>
+
+								<pre><code>
+									1'Z'A'1'20
+									2'SQR'A'B
+									3'P'A
+									4'P'B
+									5'N
+									6'E
+									7'F
+								</code></pre>
+
+								<a href="#" class="run-ex">Load Example</a>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="card card-body bg-dark ex">
+                                <p>Countdown Loop</p>
+
+								<pre><code>
+                                    1';'10'B
+                                    2'Z'A'1'10
+                                    3'P'B
+                                    4'-'B'1'B
+                                    5'N
+                                    6'E
+                                    7'A'BOOM!
+                                    8'F
+								</code></pre>
+
+								<a href="#" class="run-ex">Load Example</a>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="card card-body bg-dark ex">
+                                <p>Approximate Pi</p>
+
+								<pre><code>
+                                    1'SQR'2'P2
+                                    2'.'2'P2'P2
+                                    3';'2'P
+                                    4'Z'N'2'16
+                                    5'.'2'P'P
+                                    6'/'P2'P'P2
+                                    7'.'P2'P2'P2
+                                    8'-'1'P2'P2
+                                    9'SQR'P2'P2
+                                    10'-'1'P2'P2
+                                    11'.'2'P2'P2
+                                    12'SQR'P2'P2
+                                    13'.'P'P2'P2
+                                    14'P'N
+                                    15'P'P2
+                                    16'N
+                                    17'E
+								</code></pre>
+
+								<a href="#" class="run-ex">Load Example</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Programming DOPE</h3>
+
+					<p>
+						DOPE's syntax is pretty simple, each line is formatted as:<br/>
+                        <pre><code>line_number'instruction'arg1'arg2'arg3'arg4'arg5</code></pre>
+                        So yeah, as per spec tokens are seperated by a single quote.
+					</p>
+
+                    <table class="table table-bordered table-sm">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Instruction</th>
+                                <th>Arg 1</th>
+                                <th>Arg 2</th>
+                                <th>Arg 3</th>
+                                <th>Arg 4</th>
+                                <th>Arg 5</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>+</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>C</td>
+                                <td></td>
+                                <td></td>
+                                <td>C = A + B</td>
+                            </tr>
+                            <tr>
+                                <td>-</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>C</td>
+                                <td></td>
+                                <td></td>
+                                <td>C = A - B</td>
+                            </tr>
+                            <tr>
+                                <td>-</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>C</td>
+                                <td></td>
+                                <td></td>
+                                <td>C = A - B</td>
+                            </tr>
+                            <tr>
+                                <td>*</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>C</td>
+                                <td></td>
+                                <td></td>
+                                <td>C = A * B</td>
+                            </tr>
+                                
+                            <tr>
+                                <td>/</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>C</td>
+                                <td></td>
+                                <td></td>
+                                <td>C = A / B</td>
+                            </tr>
+                            <tr>
+                                <td>;</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>B = A</td>
+                            </tr>
+                            <tr>
+                                <td>SQR</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>B = SQRT(A)</td>
+                            </tr>
+                            <tr>
+                                <td>LOG</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>B =ln(A)</td>
+                            </tr>
+                             <tr>
+                                <td>EXP</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>B =e^A</td>
+                            </tr>
+                            <tr>
+                                <td>SIN</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>B = SINE(A)</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>L1</td>
+                                <td>L2</td>
+                                <td>L3</td>
+                                <td>
+                                    Conditional Jump <br/>
+                                    If(A > B) jump to L1 <br/>
+                                    If(A == B) jump to L2 <br/>
+                                    If(A < B) jump to L3 <br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>T</td>
+                                <td>L</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Jump TO line L</td>
+                            </tr>
+                            <tr>
+                                <td>A</td>
+                                <td>X</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Print "label" X, only way to print a string literal</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>P</td>
+                                <td>A</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Print the value of A</td>
+                            </tr>
+                            <tr>
+                                <td>N</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Print a newline</td>
+                            </tr>
+                            <tr>
+                                <td>J</td>
+                                <td>A</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Get numeric input from user, store in A</td>
+                            </tr>
+                            <tr>
+                                <td>Z</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>C</td>
+                                <td></td>
+                                <td></td>
+                                <td>For A = B to C, execute following code</td>
+                            </tr>
+                            <tr>
+                                <td>E</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>End of loop, basically jumps to closest Z</td>
+                            </tr>
+                            <tr>
+                                <td>F</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>End of program</td>
+                            </tr>
+                            <tr>
+                                <td>S</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>"Start computing", used at absolute end of progam. Not relevant outside original implementation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>What's the deal with DOPE?</h3>
+
+                    <p>
+                        DOPE(Dartmouth Oversimplified Programming Experiment) was the direct predecessor to BASIC. The language was developed by John Kemeny and Sydney Marshall in 1962. Through the 50s and 60s Kemeny and his colleague, Thomas Kurtz, had been trying to find a way to teach non-science majors about computers. DOPE was the latest attempt, an experimental language designed for the novice programmer. It was used in a single class in '62. This wasn't a failure, it was by design. Hence the 'E' in DOPE. Despite its short life DOPE was an important proving ground for ideas that would come to shape BASIC. And for years it has remained somewhat enigmatic... at least until now!
+                    </p>
+
+                    <p>
+                        I host a podcast called Advent of Computing that covers, what else, the history of the computer. Recently I was gathering information for an episode on BASIC when I ran into a strange hole in the sources. Kemeny and Kurtz mention DOPE in interviews, papers, and books. There is even a small example program tucked away in an article written by Kurtz. But besides the mentions and a few lines of code there isn't all that much out there about DOPE. That kind of missing information doesn't sit well with me, so I set about fixing it. I was able to track down the original paper describing DOPE in Dartmouth's archive and get a copy digitized. As far as I'm concerned that paper, simply titled "Dartmouth Oversimplified Programming Experiment", is the authoritative source on the language.
+                    </p>
+
+                    <p>
+                        Once I tracked down the details my next step was clear: preservation and resurrection. As near as I can tell DOPE was only used for one term at Dartmouth, and I haven't been able to find the original compiler for the language. With direct emulation out of the question my only option was to write my own implementation of the long-dead language. So I present to you DOPE-20, a mostly accurate implementation of language. I intend this as a way to recreate a bit of lost history. DOPE was never built for serious programming, but by examining the language we can get deeper insight into the development of BASIC. Think of it as Jurassic Park, but the dinosaur here is comprised of bits and bytes.
+                    </p>
+
+                    <p>
+                        DOPE-20 is relatively accurate to the source material, but there are some major caveats that bear mentioning. As of today I am the world's preeminent DOPE expert, the DOPE lord if you like, so I've taken some liberties with my implementation. Most of these were done to make it more accessible to a wider audience, something that would be in line with the language's original goals. The biggest change is the interface. The machine that ran DOPE, an LGP-30, did have a teletype terminal so it's possible DOPE was typed into the machine. More likely it was punched onto paper tape and loaded into the machine. However, I've expanded things out to a more DTSS/BASIC like command line interface. This probably isn't period accurate, but I think it's a reasonable departure. I also have no evidence that DOPE used a line number based editing interface. Given the time period I doubt there was really any text editing interface.
+                    </p>
+
+                    <p>
+                        I've also done away with a lot of the restrictions of the original language. Per the spec a DOPE program can only be 99 lines long, variables have hard upper and lower values, and to get around that scientific notation can be used. All of those limitations were in place due to the small capacity of the LGP-30 computer. The spirit behind DOPE(and yes, BASIC too) is that arbitrary limitations are a hinderance, so I decided to stick to that mantra. Another large change is that DOPE-20 is interpreted, not compiled. The 1962 implementation used a compiler, and Kemeny and Kurtz are in general very anti-interpreter. I chose implement DOPE-20 in an interpreted environment so it's a little more accessible. The entire interpreter is written in JavaScript, that way curious users can just load up a webpage and check out the language. It wouldn't be very hard to write a DOPE compiler, but then you'd have to be a little more tech savvy to experience the language. Once again, I think this is in keeping with the spirit of DOPE as a language for non-programmers.
+                    </p>
+
+                    <p>
+                        Sources:
+                        <ul>
+                            <li>
+                                John Kemeny, "Dartmouth Oversimplified Programming Experiment (DOPE)", 1962-05,via Dartmouth's Rauner Special Collections
+                            </li>
+                            <li>
+                                John Kemeny and Thomas Kurtz, "Back to BASIC", 1985
+                            </li>
+                            <li>
+                                Thomas Kurtz "BASIC". History of programming languages. History of programming languages I. ACM. pp. 517-518, 1981
+                            </li>
+                        </ul>
+                    </p>
+
+                    <p>
+                        <a href="https://adventofcomputing.com/">Listen to Advent of Computing</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <input id="file-input" type="file" name="file-input" style="display: none;" />
+	</body>
+
+	<script>
+		var dope = new DOPE({
+			onOutput: output
+		});
+
+		var term = new Terminal();
+		term.open(document.getElementById("term"));
+		term.write("DOPE-20\r\nReady\r\n\r\n");
+
+		$(".run-ex").on("click", function(e){
+			var code = $(e.target).closest(".ex").find("code").html()
+				.split("\n").map(function(l){
+					return l.replace(/^\s*/, "");
+				});
+
+			dope.lines = [];
+
+			code.forEach(function(l){
+				var ts = l.split(dope.sep);
+				dope.lines[ts.shift()] = ts.join(dope.sep);
+            });
+		});
+
+		term.write(" > ");
+
+        /*
+        var lines = [
+			,
+			"Z'A'1'10",
+			"Z'B'1'A",
+			"P'B",
+			"E",
+			"A'*",
+			"N",
+			"E",
+			";'10'C",
+			"Z'A'1'10",
+			"Z'B'A'10",
+			"P'B",
+			"E",
+			"A'*",
+			"N",
+			"E",
+			"T'1"
+        ];
+        */
+        
+		var buff = ""; //Global buffer
+
+		controlLoop(); //I hate everything about how JS works...
+
+		async function controlLoop(){
+			while(true){
+				await input();
+				console.log(buff);
+				handle(buff);
+			}
+		}
+
+		async function handle(buff){
+			//Deal with commands. This isn't in the spec but it's my implementation...
+			//	...so let's get creative
+			if(buff.match(/^[1-9]/)){ //We have a line number, load it in
+				var ts = buff.split(dope.sep);
+				dope.lines[ts.shift()] = ts.join(dope.sep);
+			}else if(buff.toUpperCase() == "LIST"){
+				term.write(dope.lines.map(function(d, i){
+					return i + dope.sep + d;
+				}).join("\r\n") + "\r\n");
+			}else if(buff.toUpperCase() == "RUN"){
+				await dope.run(linesToBuffer(dope.lines));
+			}else if(buff.toUpperCase() == "NEW"){
+				dope.lines = [];
+			}else if(buff.toUpperCase() == "SAVE"){
+                downloadFile("prog.dope", linesToBuffer(dope.lines));
+            }else if(buff.toUpperCase() == "LOAD"){
+                uploadFile(function(reader){
+                    dope.parseBuffer(reader.result);
+                });
+            }else{
+				var n = dope.runLine(0, buff);
+			}
+
+			term.write("\r\n > ");
+		}
+
+        function linesToBuffer(lines){
+            return lines.map(function(l, i){
+				return i + dope.sep + l;
+			}).join("\n")
+        }
+
+        function downloadFile(filename, text){
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+      
+            element.style.display = 'none';
+            document.body.appendChild(element);
+      
+            element.click();
+      
+            document.body.removeChild(element);
+        }
+
+        function uploadFile(cb){
+            var file = document.getElementById("file-input");
+
+            file.addEventListener("change", function(){
+                var reader = new FileReader();
+
+                reader.onload = function(e){
+                    if(cb){
+                        cb(reader);
+                    }
+                };
+
+                reader.readAsText(this.files[0], "UTF-8");
+            }, true);
+
+            $("#file-input").trigger("click");
+        }
+
+		async function input(cb){
+			buff = "";
+
+			var {data} = await new Promise(resolve => {
+				var keyHandler = term.onKey(function(d){
+					var key = d.key.toUpperCase();
+
+					if(key.charCodeAt(0) == 13){
+						term.write("\r\n");
+						keyHandler.dispose();
+						resolve(buff);
+						return buff;
+					}else if(key.charCodeAt(0) == 127){ //It's a backspace
+						if(buff.length > 0){
+							buff = buff.slice(0, -1);
+							term.write('\x1b[D \x1b[D');
+						}
+					}else{
+						term.write(key);
+						buff += key;
+					}
+				});
+			});
+
+			return data;
+		}
+
+		function output(d){
+			term.write("" + d);
+		}
+
+		function showVars(){
+			$("#debug").html("<ul>");
+
+			for(const [key, value] of Object.entries(dope.vars)){
+				if(!key.match(/^[EFGH]$/)){
+					$("#debug").append("<li>" + key + " -> " + value + "</li>");
+				}
+			}
+
+			["E", "F", "G", "H"].forEach(function(i){
+				$("#debug").append("<li>" + i + " -> " + vars[i].join(",") + "</li>");
+			});
+
+			$("#debug").append("</ul>");
+		}
+	</script>
+</html>
