@@ -284,7 +284,7 @@
         }else if(mask == "v"){ //Grab a vector... kinda gross...
             var [t, i] = token.split(/[\[\]]/);
 
-            iMask = this.makeMask([i])[0];
+            var iMask = this.makeMask([i])[0];
             if(iMask == "s"){
                 i = this.getValue(i, iMask);
             }
@@ -301,7 +301,7 @@
         }else if(mask == "v"){ //Then we have a vector
             var [t, i] = token.split(/[\[\]]/);
 
-            iMask = this.makeMask([i])[0];
+            var iMask = this.makeMask([i])[0];
             if(iMask == "s"){
                 i = this.getValue(i, iMask);
             }
