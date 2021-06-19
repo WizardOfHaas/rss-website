@@ -11,9 +11,9 @@
             "icon_class": "fas fa-rss",
             "href": "https://adventofcomputing.libsyn.com/rss"
         },{
-            "name": "Timeline!",
-            "icon_class": "fas fa-history",
-            "href": "timeline.html"
+            "name": "Resource Vault",
+            "icon_class": "fas fa-archive",
+            "href": "resources.html"
         },{
             "name": "Apple Podcasts",
             "icon_class": "fas fa-podcast",
