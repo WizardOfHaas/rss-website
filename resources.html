@@ -161,4 +161,13 @@
 
   	gtag('config', 'UA-26647302-3');
 	</script>
+
+	<script>
+		var rssrender = {};
+	
+		$.get("site-conf.json", function(config){
+			rssrender = new window.RSSRender(config);
+			rssrender.render();
+		});
+	</script>
 </html>
